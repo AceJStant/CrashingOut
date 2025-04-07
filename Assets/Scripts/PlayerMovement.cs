@@ -8,19 +8,22 @@ using UnityEngine;
  */
 public class PlayerMovement : MonoBehaviour
 {
-    private bool spinning; //true or false in spin state - See Spin Attack
-    private bool WaitToSpin; //true or false to wait to spin - 
+    private bool spinning = false; //true or false in spin state - See Spin Attack
+    private bool WaitToSpin = false; //true or false to wait to spin - 
 
     public float speed; //used for the speed of movement - see Crash Movement
     public float spinCount; //ammount of seconds that the player spins - IEnumerator SpinAttackCount
     public float spinCoolDown; //ammount of seconds for the spin cool down - IEnumerator SpinCoolDown
+    public float rotSpeed = 0.5f; //rotation speed of spinning 
 
+    GameObject PlayerSpinning;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.SetActive(true); //making it set false
+        Instantiate(PlayerSpinning);
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CrashMovement();
         SpinAttack();
+        
     }
 
     /// <summary>
@@ -72,15 +76,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (WaitToSpin == false)
         {
-            if (Input.GetKeyUp(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
             {
-
+                
                 SpinAttackCount();
-                //add code to attack
-                //add code that makes it look like it spins
-                //rotating?
-                transform.Rotate(0, 0, 360, Space.Self);
-
 
             }
         }
@@ -90,11 +89,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     IEnumerator SpinAttackCount()
     {
         //start the timer
         yield return new WaitForSeconds(spinCount);
         //stop spinning after timer is done
+        gameObject.SetActive(true);
         spinning = false;
         WaitToSpin = true;
     }
