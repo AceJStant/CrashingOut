@@ -14,16 +14,15 @@ public class PlayerMovement : MonoBehaviour
     public float speed; //used for the speed of movement - see Crash Movement
     public float spinCount; //ammount of seconds that the player spins - IEnumerator SpinAttackCount
     public float spinCoolDown; //ammount of seconds for the spin cool down - IEnumerator SpinCoolDown
-    public float rotSpeed = 0.5f; //rotation speed of spinning 
+   
 
-    GameObject PlayerSpinning;
+    public GameObject PlayerSpinning;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(true); //making it set false
-        Instantiate(PlayerSpinning);
+       
     }
 
     // Update is called once per frame
@@ -65,39 +64,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     /// <summary>
-    /// This makes the player go into an attack state where if you collide with an enemy, 
-    /// it kills them (please note that this move canÅft kill some enemies). The player will 
-    /// be in the attacking state for 1 second. After pressing the attack button, the player is 
-    /// on a cooldown and unable to attack again for 1.5 seconds. 
-    //For readability, the player should turn red when attacking but green when not attacking.
-    //E = attack.
+    /// This makes the player go into an attack state
     /// </summary>
     private void SpinAttack()
     {
         if (WaitToSpin == false)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                
+                print("spinattack");
                 SpinAttackCount();
 
             }
-        }
-        else //WaitToSpin == true
-        {
-            SpinCoolDown();
         }
     }
 
 
     IEnumerator SpinAttackCount()
     {
+
         //start the timer
-        yield return new WaitForSeconds(spinCount);
+                yield return new WaitForSeconds(spinCount);
         //stop spinning after timer is done
-        gameObject.SetActive(true);
-        spinning = false;
-        WaitToSpin = true;
+        //gameObject.SetActive(true);
+
     }
 
     IEnumerator SpinCoolDown()
