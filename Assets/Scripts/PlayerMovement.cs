@@ -82,15 +82,26 @@ public class PlayerMovement : MonoBehaviour
 
     public void LoseLife()
     {
-        //add code laters
-    }
-    
-    public void GainLife()
-    {
-        if (wumpas == 100)
+        lives--;
+
+        if(lives == 0)
         {
-            lives++;
+            //change to gameover
+        } else //must have lives
+        {
+            //respawn - possible respawn points must be made
         }
     }
-    //when the wumpa coint = 100 gain a life
+    
+    /// <summary>
+    /// when wumpas == 100, player gains a life
+    /// </summary>
+    public void GainLife()
+    {
+        if (wumpas == 100) //equals to 100
+        {
+            lives++; //1 life gained
+        }
+    }
+    
 }
