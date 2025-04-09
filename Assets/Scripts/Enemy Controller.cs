@@ -78,5 +78,31 @@ public class EnemyController : MonoBehaviour
             other.gameObject.GetComponent<PlayerMovement>().LoseLife();
         }
     }
+
+    //Have tags for the three enemy types - regular, Spiked, and Sheild
+    //Have enemys get gameobject or tag of spin, to tell if the enemy dies to spin attack from player
+    //Have enemys get gameobject of player, to tell if the enemy dies to player being above it
+    /*
+    public void EnemyTypes()
+    {
+        //If the enemy Has the tag "Regular Enemy" then it can be interacted by spin and jump
+        if(GameObject.GetCommponent == "Regular Enemy")
+        {
+
+        }
+
+        //If the enemy has the tag "Sheilded Enemy" then it can be interacted by only jumps from the player
+        if (GameObject.GetCommponent == "Sheilded Enemy")
+        {
+
+        }
+
+        //If the enemy has the tag "Spiky Turtle Enemy" then it can be interacted by only spin from the player
+        if (GameObject.GetCommponent == "Spiky Turtle Enemy")
+        {
+
+        }
+    }
+    */
 }
 
