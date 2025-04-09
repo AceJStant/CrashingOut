@@ -8,7 +8,7 @@ using UnityEngine;
  */
 public class PlayerMovement : MonoBehaviour
 {
-    private bool spinning = false; //true or false in spin state - See Spin Attack
+    
     private bool WaitToSpin = false; //true or false to wait to spin - 
 
     public float speed; //used for the speed of movement - see Crash Movement
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject PlayerSpinning;
 
+    public Rigidbody Rigidbody;
 
     // Start is called before the first frame update
     void Start()
@@ -42,59 +43,41 @@ public class PlayerMovement : MonoBehaviour
         //if "W" key preseed moves forward
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += Vector3.forward * speed * Time.deltaTime; //moves forward on the z axis
+            Rigidbody.MovePosition(transform.position += Vector3.forward * speed * Time.deltaTime); //moves forward on the z axis
         }
        
         //moves backwards when "S" is presse
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += Vector3.back * speed * Time.deltaTime; //moves backwards on the z axis
+            Rigidbody.MovePosition(transform.position += Vector3.back * speed * Time.deltaTime); //moves backwards on the z axis
         }
 
         //Press A and you move left
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += Vector3.left * speed * Time.deltaTime; //moves backwards on the z axis
+            transform.rotation = Quaternion.Euler(0, 45, 0);
         }
 
         //Press D and you move left
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * speed * Time.deltaTime; //moves backwards on the z axis
+            transform.rotation = Quaternion.Euler(0, -45, 0);
         }
     }
     /// <summary>
     /// This makes the player go into an attack state
     /// </summary>
     private void SpinAttack()
-    {
-        if (WaitToSpin == false)
+    {       
+        if (Input.GetKeyDown(KeyCode.E) && WaitToSpin == false)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                print("spinattack");
-                SpinAttackCount();
-
-            }
+            print("spinattack");
         }
+        
     }
 
 
-    IEnumerator SpinAttackCount()
-    {
-
-        //start the timer
-                yield return new WaitForSeconds(spinCount);
-        //stop spinning after timer is done
-        //gameObject.SetActive(true);
-
-    }
-
-    IEnumerator SpinCoolDown()
-    {
-        //start cool down 
-        yield return new WaitForSeconds(spinCoolDown);
-        //stop cooldown 
-        WaitToSpin = false;
-    }
+    
 }
