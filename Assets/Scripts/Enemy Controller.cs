@@ -52,4 +52,31 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Enemy Damages player script
+    /// </summary>
+    /// <param name="collision"></param>
+    //Check for physical collisions with the player
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Check if the colliding object has the player script
+        if (collision.gameObject.GetComponent<PlayerMovement>())
+        {
+            //Have the Player lose a Life
+            collision.gameObject.GetComponent<PlayerMovement>().LoseLife();
+        }
+    }
+
+    //Check for overlap with the Player
+    private void OnTriggerEnter(Collider other)
+    {
+        //Check if the colliding object has the player script
+        if (other.gameObject.GetComponent<PlayerMovement>())
+        {
+            //Have the Player lose a Life
+            other.gameObject.GetComponent<PlayerMovement>().LoseLife();
+        }
+    }
 }
+
