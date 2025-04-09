@@ -7,6 +7,9 @@ public class PlayerSpinning : MonoBehaviour
     public float rotSpeed = 0.5f;
     public float SpinTimer;
 
+    public int wumpas;
+    public int lives;
+
     // Update is called once per frame
     void Update()
     {
@@ -27,4 +30,18 @@ public class PlayerSpinning : MonoBehaviour
         yield return new WaitForSeconds(SpinTimer);
         Destroy(gameObject);
     }
+
+    public void LoseLife()
+    {
+        lives--;
+
+        if (lives == 0)
+        {
+            //add change in scenes
+        } else
+        {
+            //add code to make respawn
+        }
+    }
+
 }

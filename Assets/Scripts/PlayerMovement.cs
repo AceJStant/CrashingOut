@@ -44,25 +44,26 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             Rigidbody.MovePosition(transform.position += Vector3.forward * speed * Time.deltaTime); //moves forward on the z axis
-            transform.rotation = Quaternion.Euler(0, 45 , 0);
         }
        
         //moves backwards when "S" is presse
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += Vector3.back * speed * Time.deltaTime; //moves backwards on the z axis
+            Rigidbody.MovePosition(transform.position += Vector3.back * speed * Time.deltaTime); //moves backwards on the z axis
         }
 
         //Press A and you move left
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += Vector3.left * speed * Time.deltaTime; //moves backwards on the z axis
+            transform.rotation = Quaternion.Euler(0, 45, 0);
         }
 
         //Press D and you move left
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * speed * Time.deltaTime; //moves backwards on the z axis
+            transform.rotation = Quaternion.Euler(0, -45, 0);
         }
     }
     /// <summary>
