@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed; //used for the speed of movement - see Crash Movement
     public float spinCount; //ammount of seconds that the player spins - IEnumerator SpinAttackCount
     public float spinCoolDown; //ammount of seconds for the spin cool down - IEnumerator SpinCoolDown
-   
+
+    public int wumpas;
 
     public GameObject PlayerSpinning;
 
@@ -78,6 +79,9 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-
+    public void LoseLife()
+    {
+        //add code laters
+    }
     
 }
