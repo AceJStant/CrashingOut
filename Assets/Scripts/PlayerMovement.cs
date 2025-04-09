@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float spinCoolDown; //ammount of seconds for the spin cool down - IEnumerator SpinCoolDown
 
     public int wumpas;
+    public int lives;
 
     public GameObject PlayerSpinning;
 
@@ -84,4 +85,12 @@ public class PlayerMovement : MonoBehaviour
         //add code laters
     }
     
+    public void GainLife()
+    {
+        if (wumpas == 100)
+        {
+            lives++;
+        }
+    }
+    //when the wumpa coint = 100 gain a life
 }
