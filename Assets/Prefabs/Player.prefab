@@ -125,10 +125,10 @@ MonoBehaviour:
   speed: 10
   spinCount: 1
   spinCoolDown: 4
+  jumpForce: 8
   wumpas: 0
   lives: 0
   PlayerSpinning: {fileID: 6672812553742928042, guid: e3954a7ed733f8448b5d5cf46d6ae112, type: 3}
-  Rigidbody: {fileID: 6952466915359759010}
 --- !u!54 &6952466915359759010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 16
   m_CollisionDetection: 0
 --- !u!1001 &7130161741697334845
 PrefabInstance:

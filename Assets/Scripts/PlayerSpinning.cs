@@ -14,7 +14,7 @@ public class PlayerSpinning : MonoBehaviour
     void Update()
     {
         
-        transform.Rotate(0, rotSpeed , 0);
+        transform.Rotate(rotSpeed,0, 0);
     }
 
     /// <summary>

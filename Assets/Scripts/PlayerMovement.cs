@@ -14,18 +14,19 @@ public class PlayerMovement : MonoBehaviour
     public float speed; //used for the speed of movement - see Crash Movement
     public float spinCount; //ammount of seconds that the player spins - IEnumerator SpinAttackCount
     public float spinCoolDown; //ammount of seconds for the spin cool down - IEnumerator SpinCoolDown
+    public float jumpForce = 8f;
 
     public int wumpas;
     public int lives;
 
     public GameObject PlayerSpinning;
 
-    public Rigidbody Rigidbody;
+    private Rigidbody Rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+       Rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CrashMovement();
         SpinAttack();
-        
+        Jumping();
     }
 
     /// <summary>
@@ -57,18 +58,25 @@ public class PlayerMovement : MonoBehaviour
         //Press A and you move left
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime; //moves backwards on the z axis
-            transform.rotation = Quaternion.Euler(0, 45, 0);
-            
+            transform.position += Vector3.left * speed * Time.deltaTime; //moves backwards on the z axis 
         }
 
         //Press D and you move left
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * speed * Time.deltaTime; //moves backwards on the z axis
-            transform.rotation = Quaternion.Euler(0, -45, 0);
+            //transform.rotation = Quaternion.Euler(0, -45, 0);
         }
     }
+
+    public void Jumping()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
     /// <summary>
     /// This makes the player go into an attack state
     /// </summary>
