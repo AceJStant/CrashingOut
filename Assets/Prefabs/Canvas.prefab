@@ -385,5 +385,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wumpasText: {fileID: 6586196227215266384}
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 7502345831110524260, guid: b2fb58aa268bc984d8505048ab25a244, type: 3}
   livesText: {fileID: 7182142285877208845}
