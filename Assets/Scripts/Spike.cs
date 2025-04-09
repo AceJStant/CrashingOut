@@ -10,7 +10,7 @@ public class Spike : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerMovement>())
         {
             //Have player lose a life 
-            collision.gameObject.GetComponent<PlayerMovement>().
+            collision.gameObject.GetComponent<PlayerMovement>().LoseLife();
 
 
         }
@@ -24,7 +24,7 @@ public class Spike : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerMovement>())
         {
             //Have player lose a life 
-            other.gameObject.GetComponent<PlayerMovement>().
+            other.gameObject.GetComponent<PlayerMovement>().LoseLife();
 
 
         }
