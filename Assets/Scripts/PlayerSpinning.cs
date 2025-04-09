@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class PlayerSpinning : MonoBehaviour
 {
-    public float rotSpeed = 0.5f;
+    
     public float SpinTimer;
 
-    public int wumpas;
-    public int lives;
+    public int rotSpeed;
+   
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, rotSpeed, 0);
+        
+        transform.Rotate(0, rotSpeed , 0);
     }
 
     /// <summary>
@@ -31,17 +32,5 @@ public class PlayerSpinning : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void LoseLife()
-    {
-        lives--;
-
-        if (lives == 0)
-        {
-            //add change in scenes
-        } else
-        {
-            //add code to make respawn
-        }
-    }
 
 }

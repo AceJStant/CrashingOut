@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 86837793548659508}
   - component: {fileID: 7502345831110524260}
   - component: {fileID: 6952466915359759010}
-  - component: {fileID: 7478802023686609360}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -118,7 +117,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3351019808088125628}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2a8da36fb77a8d4ca36aac6a0a6ea5b, type: 3}
   m_Name: 
@@ -128,8 +127,8 @@ MonoBehaviour:
   spinCoolDown: 4
   wumpas: 0
   lives: 0
-  PlayerSpinning: {fileID: 4037196490603317610, guid: e3954a7ed733f8448b5d5cf46d6ae112, type: 3}
-  Rigidbody: {fileID: 0}
+  PlayerSpinning: {fileID: 6672812553742928042, guid: e3954a7ed733f8448b5d5cf46d6ae112, type: 3}
+  Rigidbody: {fileID: 6952466915359759010}
 --- !u!54 &6952466915359759010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,25 +156,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7478802023686609360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3351019808088125628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2a8da36fb77a8d4ca36aac6a0a6ea5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  spinCount: 0
-  spinCoolDown: 0
-  wumpas: 0
-  lives: 0
-  PlayerSpinning: {fileID: 4037196490603317610, guid: e3954a7ed733f8448b5d5cf46d6ae112, type: 3}
-  Rigidbody: {fileID: 6952466915359759010}
 --- !u!1001 &7130161741697334845
 PrefabInstance:
   m_ObjectHideFlags: 0
