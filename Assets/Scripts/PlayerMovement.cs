@@ -43,13 +43,13 @@ public class PlayerMovement : MonoBehaviour
         CrashMovement();
         SpinAttackPressed();
         Jumping();
-        if (spinning == true)
+        if (spinning == true) //if spinning is true he will spin physically
         {
             Spinning();
         }
-        if (WaitToSpin == true)
+        if (WaitToSpin == true) //wait to spin timer is set so that you cant spam it all numbers can be editted in unity interface
         {
-            WaitToSpinTimer();
+            
         }
     }
 
@@ -140,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
         SpinAttackPrefab.SetActive(false);
         spinning = false;
         WaitToSpin = true;
+        StartCoroutine(WaitToSpinTimer());
     }
 
     IEnumerator WaitToSpinTimer()
