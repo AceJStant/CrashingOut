@@ -15,7 +15,7 @@ public class Crate : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerSpinning>())
+        if (other.GetComponent<PlayerMovement>().spinning == true)
         {
 
             DestroyCrate();

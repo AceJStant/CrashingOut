@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float spinCount; //ammount of seconds that the player spins - IEnumerator SpinAttackCount
     public float spinCoolDown; //ammount of seconds for the spin cool down - IEnumerator SpinCoolDown
     public float jumpForce = 8f;
-    public float spinTimer;
+    public float spinTimer; //spin timer 
     public float waitToSpinTimer;
 
     public int wumpas;
@@ -84,7 +84,9 @@ public class PlayerMovement : MonoBehaviour
             //transform.rotation = Quaternion.Euler(0, -45, 0);
         }
     }
-
+    /// <summary>
+    /// Basically to jump
+    /// </summary>
     public void Jumping()
     {
         if (Input.GetKeyDown(KeyCode.Space) && OnGround())
@@ -94,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
             rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
-    private bool OnGround()
+    private bool OnGround() //makes sure that crash is on the ground and doesnt fly off
     {
         bool onGround = false;
 
@@ -113,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// This makes the player go into an attack state
     /// </summary>
-    private void SpinAttackPressed()
+    private void SpinAttackPressed() //starts the spinattack
     {       
         if (Input.GetKeyDown(KeyCode.E) && WaitToSpin == false)
         {
@@ -122,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Spinning()
+    public void Spinning() //spinning is the actual attack
     {
         Crash.SetActive(false);
         SpinAttackPrefab.SetActive(true); //intiate the spinattack prefab
@@ -132,7 +134,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
+    /// <summary>
+    /// Player spin timer
+    /// </summary>
+    /// <returns></returns>
     IEnumerator PlayerSpinTimer()
     {
         yield return new WaitForSeconds(spinTimer);
@@ -140,9 +145,12 @@ public class PlayerMovement : MonoBehaviour
         SpinAttackPrefab.SetActive(false);
         spinning = false;
         WaitToSpin = true;
-        StartCoroutine(WaitToSpinTimer());
+        StartCoroutine(WaitToSpinTimer()); //starts the wait time
     }
-
+    /// <summary>
+    /// This is the wait to spin timer, can't use the spin attack
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitToSpinTimer()
     {
         yield return new WaitForSeconds(waitToSpinTimer);
