@@ -9,32 +9,48 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     
-    private bool WaitToSpin = false; //true or false to wait to spin - 
+    public bool WaitToSpin = false; //true or false to wait to spin - 
+    public bool spinning = false;
+    
 
     public float speed; //used for the speed of movement - see Crash Movement
     public float spinCount; //ammount of seconds that the player spins - IEnumerator SpinAttackCount
     public float spinCoolDown; //ammount of seconds for the spin cool down - IEnumerator SpinCoolDown
     public float jumpForce = 8f;
+    public float spinTimer;
+    public float waitToSpinTimer;
 
     public int wumpas;
     public int lives;
+    public int rotSpeed;
 
-    public GameObject PlayerSpinning;
+    public GameObject Crash; //crash prefab
+    public GameObject SpinAttackPrefab; //spinattack model
 
-    private Rigidbody Rigidbody;
+    private Rigidbody rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
-       Rigidbody = GetComponent<Rigidbody>();
+       rigidbody = GetComponent<Rigidbody>();
+
+        SpinAttackPrefab.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         CrashMovement();
-        SpinAttack();
+        SpinAttackPressed();
         Jumping();
+        if (spinning == true)
+        {
+            Spinning();
+        }
+        if (WaitToSpin == true)
+        {
+            WaitToSpinTimer();
+        }
     }
 
     /// <summary>
@@ -46,13 +62,13 @@ public class PlayerMovement : MonoBehaviour
         //if "W" key preseed moves forward
         if (Input.GetKey(KeyCode.W))
         {
-            Rigidbody.MovePosition(transform.position += Vector3.forward * speed * Time.deltaTime); //moves forward on the z axis
+            rigidbody.MovePosition(transform.position += Vector3.forward * speed * Time.deltaTime); //moves forward on the z axis
         }
        
         //moves backwards when "S" is presse
         if (Input.GetKey(KeyCode.S))
         {
-            Rigidbody.MovePosition(transform.position += Vector3.back * speed * Time.deltaTime); //moves backwards on the z axis
+            rigidbody.MovePosition(transform.position += Vector3.back * speed * Time.deltaTime); //moves backwards on the z axis
         }
 
         //Press A and you move left
@@ -71,22 +87,65 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jumping()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && OnGround())
         {
-            Rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            print("Player Jumped");
+
+            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+    private bool OnGround()
+    {
+        bool onGround = false;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
+        {
+            print("Touching Ground");
+            onGround = true;
+
+        }
+
+        return onGround;
     }
 
     /// <summary>
     /// This makes the player go into an attack state
     /// </summary>
-    private void SpinAttack()
+    private void SpinAttackPressed()
     {       
         if (Input.GetKeyDown(KeyCode.E) && WaitToSpin == false)
         {
-            print("spinattack");
+            spinning = true;
+            StartCoroutine(PlayerSpinTimer());
         }
-        
+    }
+
+    public void Spinning()
+    {
+        Crash.SetActive(false);
+        SpinAttackPrefab.SetActive(true); //intiate the spinattack prefab
+        for (int i = 0; i < spinTimer; i++)
+        {
+            SpinAttackPrefab.transform.Rotate(0, rotSpeed, 0);
+        }
+
+    }
+
+    IEnumerator PlayerSpinTimer()
+    {
+        yield return new WaitForSeconds(spinTimer);
+        Crash.SetActive(true);
+        SpinAttackPrefab.SetActive(false);
+        spinning = false;
+        WaitToSpin = true;
+    }
+
+    IEnumerator WaitToSpinTimer()
+    {
+        yield return new WaitForSeconds(waitToSpinTimer);
+        WaitToSpin = false;
     }
 
     public void LoseLife()

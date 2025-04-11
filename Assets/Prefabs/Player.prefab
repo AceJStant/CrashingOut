@@ -129,6 +129,7 @@ MonoBehaviour:
   wumpas: 0
   lives: 0
   PlayerSpinning: {fileID: 6672812553742928042, guid: e3954a7ed733f8448b5d5cf46d6ae112, type: 3}
+  SpinAttackPrefab: {fileID: 6672812553742928042, guid: e3954a7ed733f8448b5d5cf46d6ae112, type: 3}
 --- !u!54 &6952466915359759010
 Rigidbody:
   m_ObjectHideFlags: 0
