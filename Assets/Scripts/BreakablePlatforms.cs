@@ -12,25 +12,16 @@ public class BreakablePlatforms : MonoBehaviour
 
     public bool PlatformOn = true; //determines if the platform is on or not
 
-    private Collider platformCollider;
-    private Material Material;
-
-    // Update is called once per frame
-    private void Start()
-    {
-        platformCollider = GetComponent<Collider>();
-        Material = GetComponent<Renderer>().material;
-    }
+    public GameObject BreakablePlatform;
+    
     void Update()
     {
         if (PlatformOn == false) //if platform is off the object is set off
         {
-
-            platformCollider.isTrigger = true; //turns on it's trigger to cause player to fall
-            GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-        } else //must be on
+            BreakablePlatform.SetActive(false);
+        } else //must be on 
         {
-            platformCollider.isTrigger = false;
+            BreakablePlatform.SetActive(true);
         }
         TurnOff();
     }
@@ -73,6 +64,5 @@ public class BreakablePlatforms : MonoBehaviour
     {
         yield return new WaitForSeconds(PlatformReturn);
         PlatformOn = true;
-        Instantiate(gameObject);
     }
 }
