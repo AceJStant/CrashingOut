@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 /* Ace J. Stant
  * 4/7/25
  * Player Movement 
@@ -47,10 +48,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Spinning();
         }
-        if (WaitToSpin == true) //wait to spin timer is set so that you cant spam it all numbers can be editted in unity interface
-        {
-            
-        }
     }
 
     /// <summary>
@@ -83,6 +80,8 @@ public class PlayerMovement : MonoBehaviour
             transform.position += Vector3.right * speed * Time.deltaTime; //moves backwards on the z axis
             //transform.rotation = Quaternion.Euler(0, -45, 0);
         }
+
+        
     }
     /// <summary>
     /// Basically to jump
@@ -163,7 +162,8 @@ public class PlayerMovement : MonoBehaviour
 
         if(lives == 0)
         {
-            //change to gameover
+            SceneManager.LoadScene(1);
+
         } else //must have lives
         {
             //respawn - possible respawn points must be made
