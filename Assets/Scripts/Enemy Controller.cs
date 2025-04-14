@@ -81,7 +81,20 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-
+    /*
+    //RayCast for the enemies to die from jumping
+    public void CheckingForDanger()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, maxDistance: 1f))
+        {
+            if(hit.collider.gameObject.tag == "Player")
+            {
+                Die();
+            }
+        }
+    }
+    */
     /// <summary>
     /// See if collision is with the player, then play out effects for different enemy types
     /// </summary>
@@ -93,8 +106,10 @@ public class EnemyController : MonoBehaviour
             PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
             //This will see the first part of contact betwee the player and enemies collision
             ContactPoint contact = collision.GetContact(0);
+            
             //Checks if the players is above the enemy, can use boxcollider or a rigidbody to determine
-            bool jumpedOn = contact.normal.y >  1f;
+            bool jumpedOn = contact.normal.y >  0.5f;
+            
 
             // Check collision if player is spin attacking
             if (player.spinning)  
@@ -136,7 +151,7 @@ public class EnemyController : MonoBehaviour
                 else if (enemyType == EnemyType.RegularEnemy)
                 {
                     //regular enemy dies
-                    if (jumpedOn || player.spinning)
+                    if (player.spinning)
                     {
                         Die();
                     }
