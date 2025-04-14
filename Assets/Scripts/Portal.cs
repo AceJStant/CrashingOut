@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Name:Jose Bucio
+ * Last Updated:4/5/25
+ * Description:Portal control
+ */
 public class Portal : MonoBehaviour
 {
     public Transform portalExit;

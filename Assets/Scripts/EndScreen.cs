@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/*
+ * Name:Jose Bucio
+ * Last Updated:4/14/25
+ * Description:Controls menus
+ */
 public class EndScreen : MonoBehaviour
 {
     // Start is called before the first frame update
