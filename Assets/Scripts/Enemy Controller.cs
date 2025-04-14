@@ -94,7 +94,7 @@ public class EnemyController : MonoBehaviour
             //This will see the first part of contact betwee the player and enemies collision
             ContactPoint contact = collision.GetContact(0);
             //Checks if the players is above the enemy, can use boxcollider or a rigidbody to determine
-            bool jumpedOn = contact.normal.y > 0.5f;
+            bool jumpedOn = contact.normal.y >  1f;
 
             // Check collision if player is spin attacking
             if (player.spinning)  
