@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Name:Jose Bucio
+ * Last Updated:4/5/25
+ * Description:Crate Control
+ */
 public class Crate : MonoBehaviour
 {
     public GameObject wumpaPrefab;
@@ -27,7 +31,9 @@ public class Crate : MonoBehaviour
 
 
     }
-
+    /// <summary>
+    /// Destroys crate 
+    /// </summary>
     public void DestroyCrate()
     {
 

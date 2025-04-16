@@ -23,7 +23,9 @@ public class EndScreen : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// Quits the game
+    /// </summary>
     public void QuitGame()
     {
 
@@ -32,7 +34,10 @@ public class EndScreen : MonoBehaviour
 
 
     }
-
+    /// <summary>
+    /// Switches scenes
+    /// </summary>
+    /// <param name="sceneIndex"></param>
     public void SwitchScene(int sceneIndex)
     {
 
