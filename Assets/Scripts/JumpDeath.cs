@@ -15,8 +15,9 @@ public class JumpDeath : MonoBehaviour
     public void CheckingForDanger()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, maxDistance: 1f))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, maxDistance: 0.8f))
         {
+            //If player is above the enemy will die
             if (hit.collider.gameObject.tag == "Player")
             {
                 Destroy(gameObject);
