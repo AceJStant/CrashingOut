@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
     //Changes enemy type in inspector
     public EnemyType enemyType;
 
+    public GameObject SpikyTurtle;
     // Start is called before the first frame update
     void Start()
     {
@@ -189,5 +190,6 @@ public class EnemyController : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+        SpikyTurtle.SetActive(false);
     }
 }
