@@ -34,7 +34,7 @@ public class BreakablePlatforms : MonoBehaviour
         RaycastHit hit;
         //If the raycast returns true then an object has been hit
         //when the player is hit from the top - crushed - the player respawns
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, maxDistance: 1f))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, maxDistance: 5f))
         {
             //if player hit the collider and ites tagged thwomp then respawn
             if (hit.collider.gameObject.tag == "Player")
