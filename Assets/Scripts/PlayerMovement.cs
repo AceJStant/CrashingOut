@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 8f;
     public float spinTimer; //spin timer 
     public float waitToSpinTimer;
+    public float killHeight = -5f;
+    public Vector3 respawnPoint;
 
     public int wumpas;
     public int lives;
@@ -34,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
        rigidbody = GetComponent<Rigidbody>();
-
+        respawnPoint = transform.position;
         SpinAttackPrefab.SetActive(false);
     }
 
@@ -47,6 +49,14 @@ public class PlayerMovement : MonoBehaviour
         if (spinning == true) //if spinning is true he will spin physically
         {
             Spinning();
+        }
+
+        if (transform.position.y <= killHeight)
+        {
+            LoseLife();
+
+
+
         }
     }
 
@@ -167,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
         } else //must have lives
         {
             //respawn - possible respawn points must be made
+            transform.position = respawnPoint;
         }
     }
     

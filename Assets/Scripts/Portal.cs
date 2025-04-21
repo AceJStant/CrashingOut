@@ -16,5 +16,14 @@ public class Portal : MonoBehaviour
         //Teleport any overlapped object by setting its position to the portal exit position
         other.transform.position = portalExit.position;
 
+        if(other.gameObject.GetComponent<PlayerMovement>())
+        {
+            other.gameObject.GetComponent<PlayerMovement>().respawnPoint = portalExit.position;
+
+
+
+        }
+            
+            
     }
 }
