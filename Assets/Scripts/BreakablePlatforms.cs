@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /* Ace J. Stant
- * 4/14/25
+ * Last updated 4/14/25
  * Making the code - timer and ability - of the breakable platforms
  */
 public class BreakablePlatforms : MonoBehaviour

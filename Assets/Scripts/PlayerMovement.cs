@@ -4,8 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 /* Ace J. Stant
- * 4/7/25
- * Player Movement 
+ * Last updated 4/21/25
+ *Scripting player movement, wumpas collection, lives, and etc.
  */
 public class PlayerMovement : MonoBehaviour
 {
@@ -54,9 +54,6 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.y <= killHeight)
         {
             LoseLife();
-
-
-
         }
     }
 
@@ -192,9 +189,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-
-    private void CheckPoint()
-    {
-        
-    }
+   
 }
