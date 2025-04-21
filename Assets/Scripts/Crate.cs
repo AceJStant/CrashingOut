@@ -14,7 +14,7 @@ public class Crate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckingForDanger();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -44,7 +44,19 @@ public class Crate : MonoBehaviour
             GameObject wumpa = Instantiate(wumpaPrefab, transform.position, wumpaPrefab.transform.rotation);
         }
         
+    }
 
-
+    //Breaks crate if player is above
+    public void CheckingForDanger()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, maxDistance: 0.8f))
+        {
+            //If player is above the crate will die
+            if (hit.collider.gameObject.tag == "Player")
+            {
+                DestroyCrate();
+            }
+        }
     }
 }
