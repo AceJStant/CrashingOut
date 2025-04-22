@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be664ae85814db46af416455a2f0457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wumpaPrefab: {fileID: 0}
-  spawnWumpaAmount: 3
+  wumpaPrefab: {fileID: 5471267905794679867, guid: 2a00b814f363d9a4d8246fe79e972336, type: 3}
+  spawnWumpaAmount: 5
 --- !u!114 &8087544665317362339
 MonoBehaviour:
   m_ObjectHideFlags: 0
